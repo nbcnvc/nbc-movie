@@ -1,0 +1,48 @@
+.search-box {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0
+}
+
+.search-box input {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 50px 0;
+    margin: 50px 0;
+}
+
+.movie {
+    display: flex; 
+    width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.movie__info {
+    padding: 10px;
+}
+
+.info__title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.info__vote-average {
+    margin-top: 10px;
+}
+
+
+.info__overview {
+    margin-top: 10px;
+    font-size: 14px;
+}
