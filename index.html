@@ -9,20 +9,11 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-        <form class="search-box">
+        <form class="search-box" onsubmit="handleSubmit(event)">
             <input type="text" placeholder="제목을 입력해 주세요">
             <button type="submit">검색</button>
         </form>
-        <div class="movies">
-            <!-- <div class="movie">
-                <img class="movie__img" src="https://image.tmdb.org/t/p/w200/6KErczPBROQty7QoIsaa6wJYXZi.jpg">
-                <div class="movie__info">
-                    <h3 class="info__title">영화 제목</h3>
-                    <p class="info__vote-average">평균 점수</p>
-                    <p class="info__overview">줄거리</p>
-                </div>
-            </div> -->
-        </div>
+        <div class="movies"></div>
     <script src="./index.js"></script>
 </body>
 </html>
