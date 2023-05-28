@@ -35,7 +35,7 @@ let handleSubmit = (e) => {
 
 	if (inputValue) {
 		const filteredMovies = movies.filter((movie) => {
-			if (movie.title.includes(inputValue)) {
+			if (movie.title.match(new RegExp(inputValue, 'i'))) {
 				return movie;
 			}
 		});
