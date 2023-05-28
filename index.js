@@ -85,3 +85,8 @@ let drawMovies = (movies) => {
 getMovies().then((data) => {
 	drawMovies(data);
 });
+
+window.addEventListener('DOMContentLoaded', function () {
+	const searchInput = document.querySelector('.search-box input');
+	searchInput.focus();
+});
