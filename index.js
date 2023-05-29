@@ -45,7 +45,7 @@ let handleSubmit = (e) => {
 };
 
 let drawMovies = (movies) => {
-	for (const movie of movies) {
+	movies.forEach((movie) => {
 		const { id, title, poster_path, vote_average, overview } = movie;
 
 		const card = document.createElement('div');
@@ -78,7 +78,7 @@ let drawMovies = (movies) => {
 		movieInfo.appendChild(movieOverview);
 
 		document.querySelector('.movies').appendChild(card);
-	}
+	});
 };
 
 // entrypoint
