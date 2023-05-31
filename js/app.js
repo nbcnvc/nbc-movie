@@ -19,10 +19,18 @@ let getMovies = async () => {
 };
 
 let getFetchData = async (url, options) => {
-	let res = await fetch(url, options);
-	let data = await res.json();
+  try {
+    let res = await fetch(url, options);
 
-	return data['results'];
+    if (!res.ok) {
+      throw new Error('Http errors')
+    }
+
+    let data = await res.json();
+    return data['results'];
+  } catch (err) {
+    console.log(`Fetch error: ${err}`)
+  }
 };
 
 
