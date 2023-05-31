@@ -11,10 +11,12 @@ const moviesTag = document.querySelector('.movies');
 
 let movies;
 
-window.addEventListener('DOMContentLoaded', function () {
-	const searchInput = document.querySelector('.search-box input');
-	searchInput.focus();
-});
+let getMovies = async () => {
+	let url = `${baseUrl}`;
+	movies = await getFetchData(url, options);
+
+  drawMovies(movies)
+};
 
 let getFetchData = async (url, options) => {
 	let res = await fetch(url, options);
@@ -23,34 +25,6 @@ let getFetchData = async (url, options) => {
 	return data['results'];
 };
 
-let getMovies = async () => {
-	let url = `${baseUrl}`;
-	movies = await getFetchData(url, options);
-
-  drawMovies(movies)
-};
-
-let onClickMovie = (e) => {
-	const id = e.currentTarget.getAttribute('data-id');
-	alert(`영화 id: ${id}`);
-};
-
-let handleSubmit = (e) => {
-	e.preventDefault();
-	const inputValue = document.querySelector('.search-box input').value;
-
-	if (inputValue) {
-		const filteredMovies = movies.filter((movie) => {
-			if (movie.title.match(new RegExp(inputValue, 'i'))) {
-				return movie;
-			}
-		});
-		drawMovies(filteredMovies);
-	}
-  else {
-    drawMovies(movies)
-  }
-};
 
 let drawMovies = (movies) => {
   moviesTag.innerHTML = '';
@@ -90,6 +64,5 @@ let drawMovies = (movies) => {
 	});
 };
 
-// entrypoint
 getMovies();
 
