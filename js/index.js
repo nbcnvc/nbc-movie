@@ -7,8 +7,14 @@ const options = {
 			'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNmI1OTZjMmY3NDAzNDJlY2VhNTc3MzRmYmRkMzk1NSIsInN1YiI6IjY0NzFlYTA0OTQwOGVjMDEwMDI1MWNmYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._ops8vO4n2RQ40MWbUXo64hwKvh8EFlI6t_beidcYdA',
 	},
 };
-let movies;
 const moviesTag = document.querySelector('.movies');
+
+let movies;
+
+window.addEventListener('DOMContentLoaded', function () {
+	const searchInput = document.querySelector('.search-box input');
+	searchInput.focus();
+});
 
 let getFetchData = async (url, options) => {
 	let res = await fetch(url, options);
@@ -21,7 +27,7 @@ let getMovies = async () => {
 	let url = `${baseUrl}`;
 	movies = await getFetchData(url, options);
 
-	return movies;
+  drawMovies(movies)
 };
 
 let onClickMovie = (e) => {
@@ -39,12 +45,15 @@ let handleSubmit = (e) => {
 				return movie;
 			}
 		});
-		moviesTag.innerHTML = '';
 		drawMovies(filteredMovies);
 	}
+  else {
+    drawMovies(movies)
+  }
 };
 
 let drawMovies = (movies) => {
+  moviesTag.innerHTML = '';
 	movies.forEach((movie) => {
 		const { id, title, poster_path, vote_average, overview } = movie;
 
@@ -82,11 +91,5 @@ let drawMovies = (movies) => {
 };
 
 // entrypoint
-getMovies().then((data) => {
-	drawMovies(data);
-});
+getMovies();
 
-window.addEventListener('DOMContentLoaded', function () {
-	const searchInput = document.querySelector('.search-box input');
-	searchInput.focus();
-});
