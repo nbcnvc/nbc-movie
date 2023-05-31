@@ -1,5 +1,4 @@
 .search-box {
-    /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +50,6 @@
 .info__vote-average {
     margin-top: 10px;
 }
-
 
 .info__overview {
     margin-top: 10px;
